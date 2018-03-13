@@ -1,0 +1,1009 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/23/2012 9:55:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BlueGranite"
+  DTS:CreatorName="Jim.Bennett"
+  DTS:DTSID="{5C6C2BFB-8A32-4CE2-9258-3D9B0F0BC09D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:ISOLevel="4096"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MasterStaging"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="196"
+  DTS:VersionGUID="{D7A11575-1785-44A7-9D89-956F13EA2AD5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AuditConnection]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{96B36D88-D267-4D03-8802-879416938696}"
+      DTS:ObjectName="AuditConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::AuditConnection]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=AMIMasterDS01;Initial Catalog=MDSStage;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{4FBA5E0E-A4B0-4A95-AE67-3F40D36635E5}"
+      DTS:ObjectName="ParentAuditKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D8F9CA50-F7D9-41FE-9E8D-F89350CCF8BD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A67115C9-105E-47E5-9C88-5A48B152DB70}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[System::StartTime]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractStartDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12/18/2017 3:32:39 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B21F51DD-E264-4367-A66C-684CC593CDA5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractStopDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12/18/2017 3:33:07 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4D4EF7B0-2C49-45DB-9773-FFA09550EEC3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Error">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{81B69737-E493-45B6-9AEA-8EB9ADE44DFD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Insert">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8DA503D9-EF93-4144-A43A-A67F5BD94FA3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_NoChanges">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1895A0D7-58A0-444C-84D8-DE25C377B70D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Update">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DFA36EBE-F385-4DD0-A2BE-3D6825084DDA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Xtrct">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{723CD53C-941C-4B01-B74B-1C70703480DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{450A4DBB-59BD-41FC-AFBA-EB72CC7A8A17}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">(None)</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Insert Audit Record"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{05175D0A-C7C0-4FC4-8810-23D371BCFB87}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert Audit Record"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{96B36D88-D267-4D03-8802-879416938696}"
+          SQLTask:SqlStatementSource="INSERT INTO [DimAudit]&#xA;           (ParentAuditKey&#xA;           ,[TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[PkgVersionGUID]&#xA;           ,[PkgVersionMajor]&#xA;           ,[PkgVersionMinor]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[InsertRowCnt]&#xA;           ,[UpdateRowCnt]&#xA;           ,[ErrorRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[TableMaxSurrogateKey]&#xA;           ,[SuccessfulProcessingInd]&#xA;           ,[DataStartDT]&#xA;           ,[DataEndDT])&#xA;     VALUES&#xA;           (@ParentAuditKey&#xA;           ,@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@PkgVersionGUID&#xA;           ,@PkgVersionMajor&#xA;           ,@PkgVersionMinor&#xA;           ,@ExtractStartDate&#xA;           ,@ExtractStopDate&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,'N'&#xA;           ,@ExtractStartDate&#xA;           ,@ExtractStopDate)&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey&#xA;go&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionGUID"
+            SQLTask:DtsVariableName="System::VersionGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionMajor"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionMinor"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ExtractStartDate"
+            SQLTask:DtsVariableName="User::ExtractStartDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ExtractStopDate"
+            SQLTask:DtsVariableName="User::ExtractStopDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentAuditKey"
+            SQLTask:DtsVariableName="$Package::ParentAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Run Package Logic"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4DDCDC1D-6491-4F46-A352-AE8F71BE55E5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Run Package Logic">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\Alwin"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{C8C8DFB8-53CF-43C1-B6F4-BA42C20BB874}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Alwin">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Area"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{e487e4ff-f107-4fb3-b327-78ee9f92d1bd}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Area"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinAreaStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Customer"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{ccf6db63-1e8c-42ec-a34f-147da65413ec}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Customer"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinCustomerStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Customer Purchasing Site"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{5541c4f1-1328-466f-ba70-2f1c6f98074a}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Customer Purchasing Site"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinCustomerPurchasingSiteStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Location"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{df76c591-7f18-4b65-9255-7921ed8a1ad4}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Location"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinLocationStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\PurchasingSite"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{822b5057-3501-4035-8a54-1768180f24a9}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="PurchasingSite"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinPurchasingSiteStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\PurchasingSiteType"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{35123fdd-ef3f-4ac7-a45f-1b2476aad5cd}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="PurchasingSiteType"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinPurchasingSiteTypeStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Region"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{76f59f4e-2572-474e-ba07-ec914b056471}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Region"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinRegionStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Sales Rep"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{b5d5e6f2-15cd-4173-b513-f702e877ec83}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Sales Rep"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinSalesRepStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Territory"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{1d5f604f-80b7-4646-a721-155e139c9f73}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Territory"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinTerritoryStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Alwin\Warehouse"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{C0AEB5F9-8522-4210-B7CC-9440BA4F57C4}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Warehouse"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AlwinWarehouseStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\AS400"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{048F2960-7C0A-48E6-8757-0AA1937B24D1}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="AS400">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\AS400\CUSTMSTR"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{9043fb09-d768-4718-8610-7142973295eb}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="CUSTMSTR"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AS400CUSTMSTRStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\AS400\Territory"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{e71f96fa-de7f-475b-8b35-d8f4fd65bd93}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Territory"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>AS400TerritoryStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\BAP"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{aefa9df2-c7ee-4d20-8da0-6afe459559ac}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="BAP">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\EMEMLP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{44404055-fc26-43a3-b056-ccc8b5cdeb3d}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EMEMLP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPEMEMLPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\OECMFP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{de1f5dd7-42ec-4e31-a84b-f1cf54ab20c9}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="OECMFP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPOECMFPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\OESMFP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{9abfa36f-b995-4101-91b6-00d5aac01cdf}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="OESMFP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPOESMFPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\USEMEMLP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{29e5b6d0-cc9d-4f13-a37b-0a185399b100}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="USEMEMLP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPUSEMEMLPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\USOECMFP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{ea7e8e7e-4ec1-4f6b-9674-f3324ed8777f}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="USOECMFP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPUSOECMFPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\USOESMFP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{2a2da7b3-872d-41c9-ace3-59ca7247e379}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="USOESMFP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPUSOESMFPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\Courion"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{8D1DE1B9-37EC-40A9-862F-3F769AF6F156}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Courion">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Courion\Profiles"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{c0b42efc-39f6-4171-aad7-26cd2417a716}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Profiles"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>CourionProfileStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Audit Record"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A6F6969E-3088-42F2-82CB-F174E67DB9DB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Audit Record"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{96B36D88-D267-4D03-8802-879416938696}"
+          SQLTask:SqlStatementSource="UPDATE [DimAudit]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RC_Xtrct&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,ErrorRowCnt = @RC_Error&#xA; ,SuccessfulProcessingInd='Y'&#xA; ,InsertRowCnt = @RC_Insert&#xA; ,UpdateRowCnt = @RC_Update&#xA;WHERE AuditKey = @AuditKey&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Error"
+            SQLTask:DtsVariableName="User::RC_Error"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Xtrct"
+            SQLTask:DtsVariableName="User::RC_Xtrct"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Insert"
+            SQLTask:DtsVariableName="User::RC_Insert"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Update"
+            SQLTask:DtsVariableName="User::RC_Update"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{58FB31D6-56C7-4CE9-8C24-DA40725C9475}"
+      DTS:From="Package\Insert Audit Record"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Run Package Logic" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{DC89B744-3172-4755-8494-03085C089B69}"
+      DTS:From="Package\Run Package Logic"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update Audit Record" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{680416E8-290E-4465-BA94-8BF98F0814A2}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{C5AEB4A0-7826-4C0F-8C22-CD47DFE6B8CC}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables />
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Insert Audit Record"
+          TopLeft="108.499998435378,59.5222212562296" />
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Area"
+          TopLeft="195.32538737676,161.079369588315" />
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Customer"
+          TopLeft="51.2777704756178,305.349215621703" />
+        <NodeLayout
+          Size="200,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Customer Purchasing Site"
+          TopLeft="195.32538737676,308.238104458934" />
+        <NodeLayout
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Location"
+          TopLeft="34.6111040573037,86.2126987528995" />
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\PurchasingSite"
+          TopLeft="195.32538737676,12.4349204585476" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\PurchasingSiteType"
+          TopLeft="195.32538737676,87.6571431715152" />
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Region"
+          TopLeft="41.753961093724,229.507931641075" />
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Sales Rep"
+          TopLeft="195.32538737676,232.396820478306" />
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Territory"
+          TopLeft="42.9444372664607,159.634925169699" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Run Package Logic\Alwin\Warehouse"
+          TopLeft="23.4999931117611,10.9904760399319" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="412.666666666667,436"
+          Size="412.666666666667,478.666666666667"
+          Id="Package\Run Package Logic\Alwin"
+          TopLeft="324.833332277835,39" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Run Package Logic\AS400\CUSTMSTR"
+          TopLeft="41.3333311762131,25.2571442873137" />
+        <NodeLayout
+          Size="133.333333333334,43.3333333333334"
+          Id="Package\Run Package Logic\AS400\Territory"
+          TopLeft="41.3333311762131,127.92381095398" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="261.333333333334,226"
+          Size="261.333333333334,269.333333333334"
+          Id="Package\Run Package Logic\AS400"
+          TopLeft="26.8333333209157,39" />
+        <NodeLayout
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\BAP\EMEMLP"
+          TopLeft="48.6666551714857,276.923811961299" />
+        <NodeLayout
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\BAP\OECMFP"
+          TopLeft="46.1666552087386,205.457144736733" />
+        <NodeLayout
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\BAP\OESMFP"
+          TopLeft="46.1666552087386,379.590478627966" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Run Package Logic\BAP\USEMEMLP"
+          TopLeft="48.6666551714857,102.790478070066" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Run Package Logic\BAP\USOECMFP"
+          TopLeft="46.1666552087386,31.3238108454999" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Run Package Logic\BAP\USOESMFP"
+          TopLeft="205.499986207557,31.5904866865135" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="342.666666666667,456"
+          Size="342.666666666667,498.666666666667"
+          Id="Package\Run Package Logic\BAP"
+          TopLeft="776.722216340403,41.8888888372316" />
+        <NodeLayout
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Run Package Logic\Courion\Profiles"
+          TopLeft="32.2222226361434,35.444444883532" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205.333333333334,158"
+          Size="205.333333333334,200.666666666667"
+          Id="Package\Run Package Logic\Courion"
+          TopLeft="38.2777754391234,340.777768401967" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1187.33333333334,606.666666666667"
+          Size="1187.33333333334,650"
+          Id="Package\Run Package Logic"
+          TopLeft="118.708331616596,165.166665659348" />
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\Update Audit Record"
+          TopLeft="916.249997708946,89.7055560346776" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="193.499998435378,101.52222125623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="322.319444292329,63.6444444031184"
+              Start="0,0"
+              End="322.319444292329,56.1444444031184">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1352771611374" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.1352771611374"
+                    Point2="0,38.1352771611374"
+                    Point3="4,38.1352771611374" />
+                  <mssgle:LineSegment
+                    End="318.319444292329,38.1352771611374" />
+                  <mssgle:CubicBezierSegment
+                    Point1="318.319444292329,38.1352771611374"
+                    Point2="322.319444292329,38.1352771611374"
+                    Point3="322.319444292329,42.1352771611374" />
+                  <mssgle:LineSegment
+                    End="322.319444292329,56.1444444031184" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="908.930553838818,165.166665659348">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.9861105367945,-32.7944429580038"
+              Start="0,0"
+              End="95.9861105367945,-25.2944429580038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-9.14425693976735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-9.14425693976735"
+                    Point2="0,-13.1442569397674"
+                    Point3="4,-13.1442569397674" />
+                  <mssgle:LineSegment
+                    End="91.9861105367945,-13.1442569397674" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.9861105367945,-13.1442569397674"
+                    Point2="95.9861105367945,-13.1442569397674"
+                    Point3="95.9861105367945,-17.1442569397674" />
+                  <mssgle:LineSegment
+                    End="95.9861105367945,-25.2944429580038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="131,42"
+          Id="{D8B779EC-B2F0-4469-9DD3-297CDBE7805F}"
+          TopLeft="NaN,NaN" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

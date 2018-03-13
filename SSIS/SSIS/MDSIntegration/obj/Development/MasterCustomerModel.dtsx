@@ -1,0 +1,971 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/23/2012 9:55:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BlueGranite"
+  DTS:CreatorName="Jim.Bennett"
+  DTS:DTSID="{243547F9-2DFD-458B-A7A1-454037879B07}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:ISOLevel="4096"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MasterCustomerModel"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="195"
+  DTS:VersionGUID="{4B15723C-1E9D-440A-AA80-3FC9F8903CD5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AuditConnection]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{FB3F5BDA-720C-4589-B166-95C1CDFE1BBB}"
+      DTS:ObjectName="AuditConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::AuditConnection]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=AMIMasterDS01;Initial Catalog=MDSStage;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{BA62A3D3-5BDF-4905-9128-BB9AAA63B53B}"
+      DTS:ObjectName="ParentAuditKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EC657D4D-3D90-4A29-BED0-D8F3498F5ED2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{24BA38B1-8B75-4D3E-8942-379D04DA1906}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[System::StartTime]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractStartDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12/18/2017 6:14:43 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B22947CB-0E11-4554-AA5A-C1DB09183954}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractStopDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12/18/2017 6:14:43 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{42C2839C-BDB2-48F1-94FF-C715380FD4FE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Error">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1C3F0752-0D7A-478C-9684-9EFC5AA8DF57}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Insert">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{13D1D064-CBFE-439C-A6C0-88F5392CA780}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_NoChanges">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{887BC745-7C9F-49CA-97AE-DA79594D5466}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Update">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{002B9539-F468-48AA-8BE7-8D2E1E2CBCAE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Xtrct">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{114C6774-5DFE-4C8E-B471-D1C43E3B2214}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5F58918C-3065-4FC0-B26B-0BDD62F04DA7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">(None)</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Insert Audit Record"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9B8AAE19-7745-44A5-9669-BDF423AFA98E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert Audit Record"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FB3F5BDA-720C-4589-B166-95C1CDFE1BBB}"
+          SQLTask:SqlStatementSource="INSERT INTO [DimAudit]&#xA;           (ParentAuditKey&#xA;           ,[TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[PkgVersionGUID]&#xA;           ,[PkgVersionMajor]&#xA;           ,[PkgVersionMinor]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[InsertRowCnt]&#xA;           ,[UpdateRowCnt]&#xA;           ,[ErrorRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[TableMaxSurrogateKey]&#xA;           ,[SuccessfulProcessingInd]&#xA;           ,[DataStartDT]&#xA;           ,[DataEndDT])&#xA;     VALUES&#xA;           (@ParentAuditKey&#xA;           ,@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@PkgVersionGUID&#xA;           ,@PkgVersionMajor&#xA;           ,@PkgVersionMinor&#xA;           ,@ExtractStartDate&#xA;           ,@ExtractStopDate&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,'N'&#xA;           ,@ExtractStartDate&#xA;           ,@ExtractStopDate)&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey&#xA;go&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionGUID"
+            SQLTask:DtsVariableName="System::VersionGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionMajor"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionMinor"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ExtractStartDate"
+            SQLTask:DtsVariableName="User::ExtractStartDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ExtractStopDate"
+            SQLTask:DtsVariableName="User::ExtractStopDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentAuditKey"
+            SQLTask:DtsVariableName="$Package::ParentAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Run Package Logic"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{DD4780BA-E717-4BB1-9A62-67E9898AA0EF}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Run Package Logic">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\Complete Golden Records"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{7EDB1F14-75BF-4AA6-B81B-41EE076DE619}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Complete Golden Records">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Complete Golden Records\Area Sales Manager"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{3b6b8648-67e5-4957-996f-fc14577b3222}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Area Sales Manager"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_AreaSalesManager.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Complete Golden Records\Customer Group"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{c281fc4f-ae31-4d89-b9d8-7d16fb626727}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Customer Group"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_CustomerGroup.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Complete Golden Records\Location"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{dfeb8612-6952-4587-98a0-3ec663e8bd49}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Location"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_Location.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Complete Golden Records\Location Type"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{35cf2ff5-fd5c-4c75-a322-e1b418bc46ed}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Location Type"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_LocationType.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Complete Golden Records\Regional Sales Manager"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{12abb311-fef1-4355-b175-2c2de3c7056d}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Regional Sales Manager"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_RegionalSalesManager.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Complete Golden Records\SalesTerritory"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{cbac0272-e683-40fc-95a3-4852ab833556}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SalesTerritory"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_SalesTerritory.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{1CFFFF66-3C02-47E4-B3B6-CC34640219FE}"
+              DTS:From="Package\Run Package Logic\Complete Golden Records\Location Type"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Run Package Logic\Complete Golden Records\Location" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{3CDC5733-7639-4F8E-9EA9-46C55F44EC86}"
+              DTS:From="Package\Run Package Logic\Complete Golden Records\Regional Sales Manager"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Run Package Logic\Complete Golden Records\SalesTerritory" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:DTSID="{A67C7AFA-2D9C-4ED3-A055-3AB08A80C3E4}"
+              DTS:From="Package\Run Package Logic\Complete Golden Records\Area Sales Manager"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\Run Package Logic\Complete Golden Records\SalesTerritory" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint 3]"
+              DTS:CreationName=""
+              DTS:DTSID="{CA527132-9E6B-4913-8D20-013E9A7E66C1}"
+              DTS:From="Package\Run Package Logic\Complete Golden Records\Regional Sales Manager"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 3"
+              DTS:To="Package\Run Package Logic\Complete Golden Records\Area Sales Manager" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\Maps"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{B2D28A36-5ACB-4F41-8F27-695DC07312BE}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Maps">
+          <DTS:Variables />
+          <DTS:Executables />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Run Package Logic\Partial Golden Records"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{ff2c3aae-5d64-493c-bd9f-4cf0b8337d9c}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Partial Golden Records">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Partial Golden Records\Customer"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{6408EAA7-5D38-4C67-A7D9-61FCE050C88B}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Customer"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_Customer.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Partial Golden Records\Customer Location"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{ba099044-4151-4f5f-afdb-da1535bfef52}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Customer Location"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_CustomerLocation.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\Partial Golden Records\Customer Location ShipTo"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{521484ff-c0a8-441d-9539-3ee980971af5}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Customer Location ShipTo"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>MDSCustomer_CustomerLocationShipTo.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Run Package Logic.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{86BDC173-847B-4992-AEA0-E784A108BD06}"
+          DTS:From="Package\Run Package Logic\Complete Golden Records"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Run Package Logic\Partial Golden Records" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Run Package Logic.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{4E7E91C8-22B3-4BD0-A377-4B04C4FAB1C9}"
+          DTS:From="Package\Run Package Logic\Partial Golden Records"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Run Package Logic\Maps" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Audit Record"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3ACBB9E9-801F-4A57-9352-F3E39092312C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Audit Record"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FB3F5BDA-720C-4589-B166-95C1CDFE1BBB}"
+          SQLTask:SqlStatementSource="UPDATE [DimAudit]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RC_Xtrct&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,ErrorRowCnt = @RC_Error&#xA; ,SuccessfulProcessingInd='Y'&#xA; ,InsertRowCnt = @RC_Insert&#xA; ,UpdateRowCnt = @RC_Update&#xA;WHERE AuditKey = @AuditKey&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Error"
+            SQLTask:DtsVariableName="User::RC_Error"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Xtrct"
+            SQLTask:DtsVariableName="User::RC_Xtrct"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Insert"
+            SQLTask:DtsVariableName="User::RC_Insert"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Update"
+            SQLTask:DtsVariableName="User::RC_Update"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2C1B6BB5-F397-4241-A20A-4C4CB60FE3DE}"
+      DTS:From="Package\Insert Audit Record"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Run Package Logic" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7FD1D88C-0DFD-42DB-BD96-D57937E23B9E}"
+      DTS:From="Package\Run Package Logic"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update Audit Record" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{7DBA8856-5423-4C01-8389-62B36782CB05}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{723BDE3E-009A-4694-8D12-AC902B2D22E3}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables />
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Insert Audit Record"
+          TopLeft="231.416663270444,5.5" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records\Area Sales Manager"
+          TopLeft="13.729163948757,262.166661513845" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records\Customer Group"
+          TopLeft="71.1249964268256,466.299989361167" />
+        <NodeLayout
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records\Location"
+          TopLeft="46.9851166884899,120.438090783755" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records\Location Type"
+          TopLeft="45.3958301435536,47.0833306406936" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records\Regional Sales Manager"
+          TopLeft="116.229162421388,211.033329094847" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records\SalesTerritory"
+          TopLeft="65.1874965153014,373.708322514345" />
+        <EdgeLayout
+          Id="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint]"
+          TopLeft="118.06249681022,89.7499973073603">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.7440467883969,30.6880934763948"
+              Start="0,0"
+              End="-11.7440467883969,23.1880934763948">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.3440467381974" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.3440467381974"
+                    Point2="0,15.3440467381974"
+                    Point3="-4,15.3440467381974" />
+                  <mssgle:LineSegment
+                    End="-7.74404678839694,15.3440467381974" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.74404678839694,15.3440467381974"
+                    Point2="-11.7440467883969,15.3440467381974"
+                    Point3="-11.7440467883969,19.3440467381974" />
+                  <mssgle:LineSegment
+                    End="-11.7440467883969,23.1880934763948" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint 1]"
+          TopLeft="188.895829088055,253.699995761514">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-51.0416659060867,120.008326752831"
+              Start="0,0"
+              End="-51.0416659060867,112.508326752831">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.0041633764156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.0041633764156"
+                    Point2="0,60.0041633764156"
+                    Point3="-4,60.0041633764156" />
+                  <mssgle:LineSegment
+                    End="-47.0416659060867,60.0041633764156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.0416659060867,60.0041633764156"
+                    Point2="-51.0416659060867,60.0041633764156"
+                    Point3="-51.0416659060867,64.0041633764156" />
+                  <mssgle:LineSegment
+                    End="-51.0416659060867,112.508326752831" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint 2]"
+          TopLeft="86.3958306154237,304.833328180512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.5694436776554,68.874994333833"
+              Start="0,0"
+              End="28.5694436776554,61.374994333833">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.8749966373201" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.8749966373201"
+                    Point2="0,40.8749966373201"
+                    Point3="4,40.8749966373201" />
+                  <mssgle:LineSegment
+                    End="24.5694436776554,40.8749966373201" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.5694436776554,40.8749966373201"
+                    Point2="28.5694436776554,40.8749966373201"
+                    Point3="28.5694436776554,44.8749966373201" />
+                  <mssgle:LineSegment
+                    End="28.5694436776554,61.374994333833" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Complete Golden Records.PrecedenceConstraints[Constraint 3]"
+          TopLeft="116.229162421388,232.36666242818">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.8333318059643,29.7999990856646"
+              Start="0,0"
+              End="-29.8333318059643,22.2999990856646">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-25.8333318059643,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.8333318059643,0"
+                    Point2="-29.8333318059643,0"
+                    Point3="-29.8333318059643,4" />
+                  <mssgle:LineSegment
+                    End="-29.8333318059643,22.2999990856646" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="274.666666666667,564"
+          Size="274.666666666667,606.666666666667"
+          Id="Package\Run Package Logic\Complete Golden Records"
+          TopLeft="26,39.0000000000001" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="251.333333333334,341.333333333334"
+          Size="251.333333333334,384"
+          Id="Package\Run Package Logic\Maps"
+          TopLeft="597.166662655771,47.3333332558475" />
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\Run Package Logic\Partial Golden Records\Customer"
+          TopLeft="57.7916606099654,47.8666616145771" />
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\Partial Golden Records\Customer Location"
+          TopLeft="52.5833273542423,165.449996517002" />
+        <NodeLayout
+          Size="202.666666666667,42.6666666666667"
+          Id="Package\Run Package Logic\Partial Golden Records\Customer Location ShipTo"
+          TopLeft="52.5833273542423,268.116663183669" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="260,366"
+          Size="260,408.666666666667"
+          Id="Package\Run Package Logic\Partial Golden Records"
+          TopLeft="322.333332315087,42.133334356149" />
+        <EdgeLayout
+          Id="Package\Run Package Logic.PrecedenceConstraints[Constraint]"
+          TopLeft="300.666666666667,342.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.66666564842,108.466667689482"
+              Start="0,0"
+              End="109.66666564842,100.966667689482">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="105.66666564842,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.66666564842,0"
+                    Point2="109.66666564842,0"
+                    Point3="109.66666564842,4" />
+                  <mssgle:LineSegment
+                    End="109.66666564842,100.966667689482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic.PrecedenceConstraints[Constraint 1]"
+          TopLeft="560.333332315087,242.900000472665">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.833330340684,0"
+              Start="0,0"
+              End="29.333330340684,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29.333330340684,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="853.333333333334,701.333333333334"
+          Size="853.333333333334,744.666666666667"
+          Id="Package\Run Package Logic"
+          TopLeft="265.791662758217,107.5" />
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\Update Audit Record"
+          TopLeft="1039.16666254401,35.683334778448" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="316.416663270444,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="235.152777265551,60"
+              Start="0,0"
+              End="235.152777265551,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9326263256394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.9326263256394"
+                    Point2="0,35.9326263256394"
+                    Point3="4,35.9326263256394" />
+                  <mssgle:LineSegment
+                    End="231.152777265551,35.9326263256394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="231.152777265551,35.9326263256394"
+                    Point2="235.152777265551,35.9326263256394"
+                    Point3="235.152777265551,39.9326263256394" />
+                  <mssgle:LineSegment
+                    End="235.152777265551,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="833.347218313773,107.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="294.486110896904,-29.1499985548853"
+              Start="0,0"
+              End="294.486110896904,-21.6499985548853">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-7.69273179712494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-7.69273179712494"
+                    Point2="0,-11.6927317971249"
+                    Point3="4,-11.6927317971249" />
+                  <mssgle:LineSegment
+                    End="290.486110896904,-11.6927317971249" />
+                  <mssgle:CubicBezierSegment
+                    Point1="290.486110896904,-11.6927317971249"
+                    Point2="294.486110896904,-11.6927317971249"
+                    Point3="294.486110896904,-15.6927317971249" />
+                  <mssgle:LineSegment
+                    End="294.486110896904,-21.6499985548853" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="131,42"
+          Id="{8B5442AA-DAB3-4354-87CD-AC046466FF13}"
+          TopLeft="NaN,NaN" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

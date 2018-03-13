@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[DimAudit] (
+    [AuditKey]                INT              IDENTITY (1, 1) NOT NULL,
+    [ParentAuditKey]          INT              NOT NULL,
+    [TableName]               NVARCHAR (50)    NOT NULL,
+    [PkgName]                 NVARCHAR (50)    NOT NULL,
+    [PkgGUID]                 UNIQUEIDENTIFIER NULL,
+    [PkgVersionGUID]          UNIQUEIDENTIFIER NULL,
+    [PkgVersionMajor]         SMALLINT         NULL,
+    [PkgVersionMinor]         SMALLINT         NULL,
+    [ExecStartDT]             DATETIME         NOT NULL,
+    [ExecStopDT]              DATETIME         NULL,
+    [ExecutionInstanceGUID]   UNIQUEIDENTIFIER NULL,
+    [ExtractRowCnt]           BIGINT           NULL,
+    [InsertRowCnt]            BIGINT           NULL,
+    [UpdateRowCnt]            BIGINT           NULL,
+    [ErrorRowCnt]             BIGINT           NULL,
+    [TableInitialRowCnt]      BIGINT           NULL,
+    [TableFinalRowCnt]        BIGINT           NULL,
+    [TableMaxSurrogateKey]    BIGINT           NULL,
+    [SuccessfulProcessingInd] NCHAR (1)        NOT NULL,
+    [DataStartDT]             DATETIME         NULL,
+    [DataEndDT]               DATETIME         NULL,
+    [HashValue]               VARCHAR (35)     NULL,
+    CONSTRAINT [PK_dbo.DimAudit] PRIMARY KEY CLUSTERED ([AuditKey] ASC)
+);
+

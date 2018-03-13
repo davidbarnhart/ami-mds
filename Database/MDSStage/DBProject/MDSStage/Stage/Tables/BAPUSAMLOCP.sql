@@ -1,0 +1,16 @@
+﻿CREATE TABLE [Stage].[BAPUSAMLOCP] (
+    [ALASLC]   VARCHAR (3)  NULL,
+    [ALBRCH]   VARCHAR (2)  NULL,
+    [ALDESC]   VARCHAR (20) NULL,
+    [ALISTA]   VARCHAR (1)  NULL,
+    [ALCSFL]   VARCHAR (1)  NULL,
+    [ALSHIV]   VARCHAR (1)  NULL,
+    [ALNCHR]   VARCHAR (1)  NULL,
+    [AuditKey] INT          NULL
+);
+
+
+GO
+CREATE CLUSTERED INDEX [cxStage_BAPUSAMLOCP]
+    ON [Stage].[BAPUSAMLOCP]([ALBRCH] ASC);
+

@@ -1,0 +1,50 @@
+﻿CREATE TABLE [Error].[AlwinWarehouse] (
+    [Name]                            VARCHAR (MAX) NULL,
+    [WarehouseNum]                    VARCHAR (MAX) NULL,
+    [Address1]                        VARCHAR (MAX) NULL,
+    [Address2]                        VARCHAR (MAX) NULL,
+    [City]                            VARCHAR (MAX) NULL,
+    [State]                           VARCHAR (MAX) NULL,
+    [ZipCode]                         VARCHAR (MAX) NULL,
+    [Country]                         VARCHAR (MAX) NULL,
+    [Phone]                           VARCHAR (MAX) NULL,
+    [FaxPhone]                        VARCHAR (MAX) NULL,
+    [Contact]                         VARCHAR (MAX) NULL,
+    [Warehouse]                       VARCHAR (MAX) NULL,
+    [Direct]                          VARCHAR (MAX) NULL,
+    [S]                               VARCHAR (MAX) NULL,
+    [M]                               VARCHAR (MAX) NULL,
+    [T]                               VARCHAR (MAX) NULL,
+    [W]                               VARCHAR (MAX) NULL,
+    [TH]                              VARCHAR (MAX) NULL,
+    [F]                               VARCHAR (MAX) NULL,
+    [SA]                              VARCHAR (MAX) NULL,
+    [EMail]                           VARCHAR (MAX) NULL,
+    [CommType]                        VARCHAR (MAX) NULL,
+    [NFRCLogoID]                      VARCHAR (MAX) NULL,
+    [NFRCLogoData]                    VARCHAR (MAX) NULL,
+    [QCLabelImageID]                  VARCHAR (MAX) NULL,
+    [CustomerIsCastle]                VARCHAR (MAX) NULL,
+    [CustModelDescTypeID]             VARCHAR (MAX) NULL,
+    [ParentWarehouseNum]              VARCHAR (MAX) NULL,
+    [GridBumpers]                     VARCHAR (MAX) NULL,
+    [ShipFOsComplete]                 VARCHAR (MAX) NULL,
+    [EnableAdvancedShipmentReporting] VARCHAR (MAX) NULL,
+    [AdvancedShipmentReportingPath]   VARCHAR (MAX) NULL,
+    [CustomerIsWW]                    VARCHAR (MAX) NULL,
+    [ASNFileFormat]                   VARCHAR (MAX) NULL,
+    [WarehouseCustomerGroupID]        VARCHAR (MAX) NULL,
+    [CustClingLabelTypeID]            VARCHAR (MAX) NULL,
+    [AuditKey]                        INT           NULL,
+    [ErrorRowId]                      INT           IDENTITY (1, 1) NOT NULL,
+    [ErrorCode]                       INT           NULL,
+    [ErrorColumn]                     INT           NULL,
+    [ErrorColumnName]                 VARCHAR (128) NULL,
+    [ErrorDescription]                VARCHAR (MAX) NULL
+);
+
+
+GO
+CREATE CLUSTERED INDEX [cxError_AlwinWarehouse]
+    ON [Error].[AlwinWarehouse]([ErrorRowId] ASC);
+
