@@ -13,8 +13,8 @@
   DTS:ObjectName="MDSCustomer_SalesTerritory"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="158"
-  DTS:VersionGUID="{E8738353-9989-4C53-A1DA-F69C88393AC1}">
+  DTS:VersionBuild="160"
+  DTS:VersionGUID="{83FCF187-F61A-472A-ACFC-8B18EBC89D59}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -128,7 +128,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStartDate">
       <DTS:VariableValue
-        DTS:DataType="7">1/10/2018 5:10:30 PM</DTS:VariableValue>
+        DTS:DataType="7">3/19/2018 5:24:22 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -139,7 +139,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStopDate">
       <DTS:VariableValue
-        DTS:DataType="7">1/10/2018 5:11:50 PM</DTS:VariableValue>
+        DTS:DataType="7">3/19/2018 5:24:56 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -372,7 +372,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="GetMDSModelVersionName"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -412,7 +412,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="GetMDSSystemUserId"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4237,8 +4237,31 @@ where [refTable].[Code] = ?</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
-FROM dbo.TERMS</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+
+	Code = COALESCE(SalesTerritoryHierarchy.Code, SalesTerritory.Code)
+,	Name = COALESCE(SalesTerritoryHierarchy.Name, SalesTerritory.Name)
+,	Division = COALESCE(SalesTerritoryHierarchy.Division, SalesTerritory.Division)
+,	TerritoryNumber
+,	Region
+,	Area
+,	SalesRep
+,	AreaSalesManagerID
+,	AreaSalesManager
+,	AreaSalesManagerEmailAddress
+,	AreaSalesManagerTitle
+,	RegionalSalesManagerID
+,	RegionalSalesManager
+,	RegionalSalesManagerEmailAddress
+,	RegionalSalesManagerTitle
+,	SeniorVPID
+,	SeniorVP
+,	SeniorVPEmailAddress
+,	SeniorVPTitle
+
+FROM MDS.SalesTerritoryHierarchy
+FULL OUTER JOIN MDS.SalesTerritory
+	ON SalesTerritoryHierarchy.Code = SalesTerritory.Code</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -4255,7 +4278,7 @@ FROM dbo.TERMS</property>
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">3</property>
+                      typeConverter="AccessMode">2</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
@@ -5224,24 +5247,24 @@ FROM dbo.TERMS</property>
                   startId="Package\Run Package Logic\Load MDS Staging Table\Determine Action.Outputs[New Members]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output3]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input]"
-                  name="OLE DB Destination Error Output"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Outputs[OLE DB Destination Error Output]" />
-                <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input]"
                   name="OLE DB Destination Error Output"
                   startId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Outputs[OLE DB Destination Error Output]" />
                 <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 1]"
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input]"
                   name="OLE DB Destination Error Output"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Outputs[OLE DB Destination Error Output]" />
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Outputs[OLE DB Destination Error Output]" />
                 <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 3]"
                   name="OLE DB Destination Error Output"
                   startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Outputs[OLE DB Destination Error Output]" />
+                <path
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 1]"
+                  name="OLE DB Destination Error Output"
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Outputs[OLE DB Destination Error Output]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Source Output]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct.Inputs[Row Count Input 1]"
@@ -5259,24 +5282,24 @@ FROM dbo.TERMS</property>
                   startId="Package\Run Package Logic\Load MDS Staging Table\Get Error Details.Outputs[Output 0]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 13]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Additional Columns.Inputs[Derived Column Input]"
-                  name="Row Count Output 1"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\New Rows.Outputs[Row Count Output 1]" />
-                <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Update Additional Columns.Inputs[Derived Column Input]"
-                  name="Row Count Output 1"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Updated Rows.Outputs[Row Count Output 1]" />
-                <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Generate HashValue.Inputs[Input 0]"
                   name="Row Count Output 1"
                   startId="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct.Outputs[Row Count Output 1]" />
                 <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Get Error Details.Inputs[Input 0]"
                   name="Row Count Output 1"
                   startId="Package\Run Package Logic\Load MDS Staging Table\RC_Error.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Additional Columns.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Run Package Logic\Load MDS Staging Table\New Rows.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Update Additional Columns.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Updated Rows.Outputs[Row Count Output 1]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Union All Output 1]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\RC_Error.Inputs[Row Count Input 1]"
@@ -5295,7 +5318,7 @@ FROM dbo.TERMS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="MDS Process Batch"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:PropertyExpression
             DTS:Name="SqlStatementSource">"EXEC " +  @[User::StagingSPName] + " @VersionName=? , @BatchTag=?;"</DTS:PropertyExpression>
@@ -5327,7 +5350,7 @@ FROM dbo.TERMS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="MDS Validate Entity"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5363,7 +5386,7 @@ FROM dbo.TERMS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Send Email if Errors Exist"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5606,7 +5629,7 @@ FROM dbo.TERMS</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="186.666666666667,42"
+          Size="187,42"
           Id="Package\Run Package Logic\Get Current RowCount"
           TopLeft="27.5000000000001,404.5" />
         <NodeLayout
@@ -5614,7 +5637,7 @@ FROM dbo.TERMS</property>
           Id="Package\Run Package Logic\Get Prior RowCount"
           TopLeft="36,5.5" />
         <NodeLayout
-          Size="209.333333333334,42"
+          Size="209,42"
           Id="Package\Run Package Logic\GetMDSModelVersionName"
           TopLeft="32.0000000000001,594" />
         <NodeLayout
@@ -5630,21 +5653,21 @@ FROM dbo.TERMS</property>
           Id="Package\Run Package Logic\Load MDS Staging Table"
           TopLeft="22,311.5" />
         <NodeLayout
-          Size="170.666666666667,42"
+          Size="171,42"
           Id="Package\Run Package Logic\MDS Process Batch"
           TopLeft="32.0000000000001,678" />
         <NodeLayout
-          Size="173.333333333334,42"
+          Size="173,42"
           Id="Package\Run Package Logic\MDS Validate Entity"
           TopLeft="37,837" />
         <NodeLayout
-          Size="197.333333333334,42"
+          Size="197,42"
           Id="Package\Run Package Logic\Send Email if Errors Exist"
           TopLeft="329.5,508.5" />
         <NodeLayout
           Size="228,42"
           Id="Package\Run Package Logic\Trucate Stage and Error Tables"
-          TopLeft="35.5,207.5" />
+          TopLeft="10.5,204.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\Run Package Logic\Update Audit Record"
@@ -5695,30 +5718,18 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic.PrecedenceConstraints[Constraint 2]"
-          TopLeft="122,149.5">
+          TopLeft="123.25,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="27.5,58"
+              EndConnector="0,55"
               Start="0,0"
-              End="27.5,50.5">
+              End="0,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="4,29" />
-                  <mssgle:LineSegment
-                    End="23.5,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23.5,29"
-                    Point2="27.5,29"
-                    Point3="27.5,33" />
-                  <mssgle:LineSegment
-                    End="27.5,50.5" />
+                    End="0,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5773,30 +5784,18 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic.PrecedenceConstraints[Constraint 5]"
-          TopLeft="149.5,249.5">
+          TopLeft="122.25,246.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-29.5,62"
+              EndConnector="0,65"
               Start="0,0"
-              End="-29.5,54.5">
+              End="0,57.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
-                  <mssgle:LineSegment
-                    End="-25.5,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-25.5,31"
-                    Point2="-29.5,31"
-                    Point3="-29.5,35" />
-                  <mssgle:LineSegment
-                    End="-29.5,54.5" />
+                    End="0,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5922,8 +5921,8 @@ FROM dbo.TERMS</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1173.33333333334,948"
-          Size="1173.33333333334,990.666666666667"
+          PanelSize="1173,948"
+          Size="1173,991"
           Id="Package\Run Package Logic"
           TopLeft="18.5000000000001,12.833333333333" />
       </GraphLayout>
@@ -5947,77 +5946,77 @@ FROM dbo.TERMS</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="174.666666666667,42"
+          Size="175,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Generate HashValue"
           TopLeft="205,209.5" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct"
-          TopLeft="232.5,107.5" />
-        <NodeLayout
-          Size="158.666666666667,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows"
-          TopLeft="168,821.5" />
-        <NodeLayout
-          Size="226,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Lookup Existing MDS Members"
-          TopLeft="199.5,311.5" />
-        <NodeLayout
-          Size="121.333333333334,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\RC_Error"
-          TopLeft="430,1127.5" />
         <NodeLayout
           Size="128,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\New Rows"
           TopLeft="228.5,617.5" />
         <NodeLayout
-          Size="160,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Determine Action"
-          TopLeft="212.5,515.5" />
+          Size="159,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows"
+          TopLeft="168,821.5" />
         <NodeLayout
-          Size="185.333333333334,42"
+          Size="147,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Updated Rows"
+          TopLeft="417,617.5" />
+        <NodeLayout
+          Size="185,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update"
           TopLeft="398,821.5" />
         <NodeLayout
-          Size="206.666666666667,42"
+          Size="207,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Missing Records HashValue"
           TopLeft="189,413.5" />
         <NodeLayout
-          Size="185.333333333334,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Insert Into Error Table"
-          TopLeft="398,1331.5" />
-        <NodeLayout
-          Size="157.333333333334,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Get Error Details"
-          TopLeft="412,1229.5" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower"
-          TopLeft="405.5,923.5" />
+          Size="160,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Determine Action"
+          TopLeft="212.5,515.5" />
         <NodeLayout
           Size="138,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Union Errors"
           TopLeft="421.5,1025.5" />
         <NodeLayout
+          Size="185,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Insert Into Error Table"
+          TopLeft="398,1331.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Get Error Details"
+          TopLeft="412,1229.5" />
+        <NodeLayout
           Size="206,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Update Additional Columns"
           TopLeft="387.5,719.5" />
         <NodeLayout
-          Size="146.666666666667,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Updated Rows"
-          TopLeft="417,617.5" />
+          Size="128,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Read Data"
+          TopLeft="228.5,5.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower"
+          TopLeft="405.5,923.5" />
         <NodeLayout
           Size="194,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower"
           TopLeft="150.5,923.5" />
         <NodeLayout
-          Size="169.333333333334,42"
+          Size="226,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Lookup Existing MDS Members"
+          TopLeft="178.5,306.5" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct"
+          TopLeft="232.5,107.5" />
+        <NodeLayout
+          Size="169,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Additional Columns"
           TopLeft="158,719.5" />
         <NodeLayout
-          Size="128,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Read Data"
-          TopLeft="228.5,5.5" />
+          Size="121,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\RC_Error"
+          TopLeft="430,1127.5" />
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Union All Output 1]"
           TopLeft="490.5,1067.5">
@@ -6042,6 +6041,50 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 13]"
+          TopLeft="292.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
+          TopLeft="490.5,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
           TopLeft="292.5,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6075,52 +6118,8 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
-          TopLeft="490.5,1169.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
-          TopLeft="292.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
-          TopLeft="490.5,659.5">
+          TopLeft="490.5,1169.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6164,30 +6163,18 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Output 0]"
-          TopLeft="292.5,251.5">
+          TopLeft="292,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20,60"
+              EndConnector="0,55"
               Start="0,0"
-              End="20,52.5">
+              End="0,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="16,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16,30"
-                    Point2="20,30"
-                    Point3="20,34" />
-                  <mssgle:LineSegment
-                    End="20,52.5" />
+                    End="0,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6220,30 +6207,6 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output3]"
-          TopLeft="247.5,863.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,20.533203125,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
           TopLeft="490.5,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6267,43 +6230,31 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
-          TopLeft="247.5,965.5">
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
+          TopLeft="247.5,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="221.333333333333,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="221.333333333333,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5873925501433"
-                    Point2="0,35.5873925501433"
-                    Point3="4,35.5873925501433" />
-                  <mssgle:LineSegment
-                    End="217.333333333333,35.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="217.333333333333,35.5873925501433"
-                    Point2="221.333333333333,35.5873925501433"
-                    Point3="221.333333333333,39.5873925501433" />
-                  <mssgle:LineSegment
-                    End="221.333333333333,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="37.4577604166665,40.5873925501433,146.4178125,11.43359375"
+              BoundingBox="-73.20890625,20.533203125,146.4178125,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
           TopLeft="490.5,965.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6339,6 +6290,42 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
+          TopLeft="247.5,965.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="221.333333333333,60"
+              Start="0,0"
+              End="221.333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5873925501433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5873925501433"
+                    Point2="0,35.5873925501433"
+                    Point3="4,35.5873925501433" />
+                  <mssgle:LineSegment
+                    End="217.333333333333,35.5873925501433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="217.333333333333,35.5873925501433"
+                    Point2="221.333333333333,35.5873925501433"
+                    Point3="221.333333333333,39.5873925501433" />
+                  <mssgle:LineSegment
+                    End="221.333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="37.4577604166665,40.5873925501433,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[New Rows]"
           TopLeft="292.5,557.5">
           <EdgeLayout.Curve>
@@ -6364,37 +6351,25 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Lookup Match Output]"
-          TopLeft="312.5,353.5">
+          TopLeft="292,348.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-20,60"
+              EndConnector="0,65"
               Start="0,0"
-              End="-20,52.5">
+              End="0,57.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-16,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16,30"
-                    Point2="-20,30"
-                    Point3="-20,34" />
-                  <mssgle:LineSegment
-                    End="-20,52.5" />
+                    End="0,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-58.19138671875,35,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6430,7 +6405,7 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="55.4457552083333,29.3564356435644,61.77515625,11.384765625"
+              BoundingBox="55.4457552083335,29.3564356435644,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6517,29 +6492,6 @@ FROM dbo.TERMS</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Run Package Logic\Load MDS Staging Table\Lookup Existing MDS Members">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update">
     <Properties>
       <Property>
@@ -6561,6 +6513,14 @@ FROM dbo.TERMS</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Run Package Logic\Load MDS Staging Table\Read Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower">
     <Properties>
       <Property>
@@ -6577,8 +6537,23 @@ FROM dbo.TERMS</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Run Package Logic\Load MDS Staging Table\Read Data">
+    design-time-name="Package\Run Package Logic\Load MDS Staging Table\Lookup Existing MDS Members">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
