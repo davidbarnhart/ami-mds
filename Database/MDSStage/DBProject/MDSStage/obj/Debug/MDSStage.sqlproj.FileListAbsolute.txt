@@ -1,7 +1,0 @@
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\bin\Debug\MDSStage.dacpac
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\obj\Debug\Model.xml
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\obj\Debug\refactor.xml
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\obj\Debug\postdeploy.sql
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\obj\Debug\predeploy.sql
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\obj\Debug\MDSStage.dll
-C:\Users\BennettJ\Documents\Source\CustomerMDM\Database\MDSStage\DBProject\MDSStage\obj\Debug\MDSStage.pdb
