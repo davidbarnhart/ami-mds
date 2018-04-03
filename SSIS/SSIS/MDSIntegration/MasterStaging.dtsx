@@ -13,8 +13,8 @@
   DTS:ObjectName="MasterStaging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="196"
-  DTS:VersionGUID="{D7A11575-1785-44A7-9D89-956F13EA2AD5}">
+  DTS:VersionBuild="199"
+  DTS:VersionGUID="{44DA6B4F-AB43-4948-A7A1-57D442AE5588}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -61,7 +61,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStartDate">
       <DTS:VariableValue
-        DTS:DataType="7">12/18/2017 3:32:39 PM</DTS:VariableValue>
+        DTS:DataType="7">4/3/2018 4:01:25 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -72,7 +72,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStopDate">
       <DTS:VariableValue
-        DTS:DataType="7">12/18/2017 3:33:07 PM</DTS:VariableValue>
+        DTS:DataType="7">4/3/2018 4:04:43 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -532,6 +532,27 @@
           <DTS:Variables />
           <DTS:Executables>
             <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\BRCTLP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{fcbdd9c1-fa6d-4660-908d-9913304720a9}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="BRCTLP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPBRCTLPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
               DTS:refId="Package\Run Package Logic\BAP\EMEMLP"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
@@ -587,6 +608,27 @@
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>BAPOESMFPStage.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentAuditKey</ParameterName>
+                    <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Run Package Logic\BAP\R7CTLP"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{6c3fa016-f489-43db-93d3-b05f888017ea}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="R7CTLP"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>BAPR7CTLPStage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>ParentAuditKey</ParameterName>
                     <BindedVariableOrParameterName>User::AuditKey</BindedVariableOrParameterName>
@@ -808,118 +850,126 @@
           Id="Package\Insert Audit Record"
           TopLeft="108.499998435378,59.5222212562296" />
         <NodeLayout
-          Size="120,42.6666666666667"
+          Size="120,43"
           Id="Package\Run Package Logic\Alwin\Area"
           TopLeft="195.32538737676,161.079369588315" />
         <NodeLayout
-          Size="120,42.6666666666667"
+          Size="120,43"
           Id="Package\Run Package Logic\Alwin\Customer"
           TopLeft="51.2777704756178,305.349215621703" />
         <NodeLayout
-          Size="200,42.6666666666667"
+          Size="200,43"
           Id="Package\Run Package Logic\Alwin\Customer Purchasing Site"
           TopLeft="195.32538737676,308.238104458934" />
         <NodeLayout
-          Size="118.666666666667,42.6666666666667"
+          Size="119,43"
           Id="Package\Run Package Logic\Alwin\Location"
           TopLeft="34.6111040573037,86.2126987528995" />
         <NodeLayout
-          Size="148,42.6666666666667"
+          Size="148,43"
           Id="Package\Run Package Logic\Alwin\PurchasingSite"
           TopLeft="195.32538737676,12.4349204585476" />
         <NodeLayout
-          Size="172,42.6666666666667"
+          Size="172,43"
           Id="Package\Run Package Logic\Alwin\PurchasingSiteType"
           TopLeft="195.32538737676,87.6571431715152" />
         <NodeLayout
-          Size="120,42.6666666666667"
+          Size="120,43"
           Id="Package\Run Package Logic\Alwin\Region"
           TopLeft="41.753961093724,229.507931641075" />
         <NodeLayout
-          Size="120,42.6666666666667"
+          Size="120,43"
           Id="Package\Run Package Logic\Alwin\Sales Rep"
           TopLeft="195.32538737676,232.396820478306" />
         <NodeLayout
-          Size="120,42.6666666666667"
+          Size="120,43"
           Id="Package\Run Package Logic\Alwin\Territory"
           TopLeft="42.9444372664607,159.634925169699" />
         <NodeLayout
-          Size="132,42.6666666666667"
+          Size="132,43"
           Id="Package\Run Package Logic\Alwin\Warehouse"
           TopLeft="23.4999931117611,10.9904760399319" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="412.666666666667,436"
-          Size="412.666666666667,478.666666666667"
+          PanelSize="413,436"
+          Size="413,479"
           Id="Package\Run Package Logic\Alwin"
           TopLeft="324.833332277835,39" />
         <NodeLayout
-          Size="132,42.6666666666667"
+          Size="132,43"
           Id="Package\Run Package Logic\AS400\CUSTMSTR"
           TopLeft="41.3333311762131,25.2571442873137" />
         <NodeLayout
-          Size="133.333333333334,43.3333333333334"
+          Size="133,43"
           Id="Package\Run Package Logic\AS400\Territory"
           TopLeft="41.3333311762131,127.92381095398" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="261.333333333334,226"
-          Size="261.333333333334,269.333333333334"
+          PanelSize="261,226"
+          Size="261,269"
           Id="Package\Run Package Logic\AS400"
           TopLeft="26.8333333209157,39" />
         <NodeLayout
-          Size="118.666666666667,42.6666666666667"
+          Size="116,42"
+          Id="Package\Run Package Logic\BAP\BRCTLP"
+          TopLeft="206.166655208739,105.590478627966" />
+        <NodeLayout
+          Size="119,43"
           Id="Package\Run Package Logic\BAP\EMEMLP"
           TopLeft="48.6666551714857,276.923811961299" />
         <NodeLayout
-          Size="118.666666666667,42.6666666666667"
+          Size="119,43"
           Id="Package\Run Package Logic\BAP\OECMFP"
           TopLeft="46.1666552087386,205.457144736733" />
         <NodeLayout
-          Size="118.666666666667,42.6666666666667"
+          Size="119,43"
           Id="Package\Run Package Logic\BAP\OESMFP"
           TopLeft="46.1666552087386,379.590478627966" />
         <NodeLayout
-          Size="132,42.6666666666667"
+          Size="132,43"
           Id="Package\Run Package Logic\BAP\USEMEMLP"
           TopLeft="48.6666551714857,102.790478070066" />
         <NodeLayout
-          Size="132,42.6666666666667"
+          Size="132,43"
           Id="Package\Run Package Logic\BAP\USOECMFP"
           TopLeft="46.1666552087386,31.3238108454999" />
         <NodeLayout
-          Size="132,42.6666666666667"
+          Size="132,43"
           Id="Package\Run Package Logic\BAP\USOESMFP"
           TopLeft="205.499986207557,31.5904866865135" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Run Package Logic\BAP\R7CTLP"
+          TopLeft="204.166655208739,208.590478627966" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="342.666666666667,456"
-          Size="342.666666666667,498.666666666667"
+          PanelSize="343,478"
+          Size="343,521"
           Id="Package\Run Package Logic\BAP"
           TopLeft="776.722216340403,41.8888888372316" />
         <NodeLayout
-          Size="113.333333333334,42.6666666666667"
+          Size="113,43"
           Id="Package\Run Package Logic\Courion\Profiles"
           TopLeft="32.2222226361434,35.444444883532" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="205.333333333334,158"
-          Size="205.333333333334,200.666666666667"
+          PanelSize="205,158"
+          Size="205,201"
           Id="Package\Run Package Logic\Courion"
           TopLeft="38.2777754391234,340.777768401967" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1187.33333333334,606.666666666667"
-          Size="1187.33333333334,650"
+          PanelSize="1187,564"
+          Size="1187,607"
           Id="Package\Run Package Logic"
           TopLeft="118.708331616596,165.166665659348" />
         <NodeLayout
-          Size="177.333333333334,42.6666666666667"
+          Size="177,43"
           Id="Package\Update Audit Record"
           TopLeft="916.249997708946,89.7055560346776" />
         <EdgeLayout
@@ -928,26 +978,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="322.319444292329,63.6444444031184"
+              EndConnector="322.208333181218,63.6444444031184"
               Start="0,0"
-              End="322.319444292329,56.1444444031184">
+              End="322.208333181218,56.1444444031184">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.1352771611374" />
+                    End="0,34.1352627493698" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34.1352771611374"
-                    Point2="0,38.1352771611374"
-                    Point3="4,38.1352771611374" />
+                    Point1="0,34.1352627493698"
+                    Point2="0,38.1352627493698"
+                    Point3="4,38.1352627493698" />
                   <mssgle:LineSegment
-                    End="318.319444292329,38.1352771611374" />
+                    End="318.208333181218,38.1352627493698" />
                   <mssgle:CubicBezierSegment
-                    Point1="318.319444292329,38.1352771611374"
-                    Point2="322.319444292329,38.1352771611374"
-                    Point3="322.319444292329,42.1352771611374" />
+                    Point1="318.208333181218,38.1352627493698"
+                    Point2="322.208333181218,38.1352627493698"
+                    Point3="322.208333181218,42.1352627493698" />
                   <mssgle:LineSegment
-                    End="322.319444292329,56.1444444031184" />
+                    End="322.208333181218,56.1444444031184" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -958,30 +1008,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="908.930553838818,165.166665659348">
+          TopLeft="908.708331616596,165.166665659348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.9861105367945,-32.7944429580038"
+              EndConnector="96.0416660923501,-32.4611096246704"
               Start="0,0"
-              End="95.9861105367945,-25.2944429580038">
+              End="96.0416660923501,-24.9611096246704">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-9.14425693976735" />
+                    End="0,-9.01066180817179" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-9.14425693976735"
-                    Point2="0,-13.1442569397674"
-                    Point3="4,-13.1442569397674" />
+                    Point1="0,-9.01066180817179"
+                    Point2="0,-13.0106618081718"
+                    Point3="4,-13.0106618081718" />
                   <mssgle:LineSegment
-                    End="91.9861105367945,-13.1442569397674" />
+                    End="92.0416660923501,-13.0106618081718" />
                   <mssgle:CubicBezierSegment
-                    Point1="91.9861105367945,-13.1442569397674"
-                    Point2="95.9861105367945,-13.1442569397674"
-                    Point3="95.9861105367945,-17.1442569397674" />
+                    Point1="92.0416660923501,-13.0106618081718"
+                    Point2="96.0416660923501,-13.0106618081718"
+                    Point3="96.0416660923501,-17.0106618081718" />
                   <mssgle:LineSegment
-                    End="95.9861105367945,-25.2944429580038" />
+                    End="96.0416660923501,-24.9611096246704" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
