@@ -13,8 +13,8 @@
   DTS:ObjectName="AS400TerritoryStage"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="178"
-  DTS:VersionGUID="{BD3A5353-CFC9-441B-A371-678B86611129}">
+  DTS:VersionBuild="180"
+  DTS:VersionGUID="{92E78712-94F6-4ED9-86BB-7168BEC5D580}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -132,7 +132,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStartDate">
       <DTS:VariableValue
-        DTS:DataType="7">4/5/2018 10:28:02 AM</DTS:VariableValue>
+        DTS:DataType="7">4/17/2018 3:02:39 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -143,7 +143,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStopDate">
       <DTS:VariableValue
-        DTS:DataType="7">4/5/2018 11:20:28 AM</DTS:VariableValue>
+        DTS:DataType="7">4/17/2018 10:03:43 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -212,7 +212,7 @@
       DTS:CreationName=""
       DTS:DTSID="{AFF38A8B-648E-4256-BE98-DD734187B8FA}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;TRIM(SUBSTRING(TM1.K00001,10,3)) AS TERRITORY, &#xA;TRIM(SUBSTRING(TM1.F00001,1,31)) AS TERRITORY_NAME,&#xA;TRIM(SUBSTRING(TM1.F00001,41,2)) AS ASM_CODE,&#xA;Trim(SUBSTRING(TM2.F00001,7,19)) as ASM_NAME,&#xA;Trim(SUBSTRING(TM2.F00001,26,28)) as AREA,&#xA;TRIM(SUBSTRING(TM1.F00001,35,2)) AS REGIONAL_MANAGER_CODE,&#xA;REPLACE(REPLACE(TRIM(SUBSTRING(TM4.F00001,3,23)),'RSVP-',''),'RVP-','') AS REGIONAL_MANANGER_NAME,&#xA;REPLACE(TRIM(SUBSTRING(TM4.F00001,26,25)),'REGION','') AS REGION,&#xA;CASE WHEN SUBSTRING(TM4.F00001,3,4) = 'RSVP' THEN 'ASC'&#xA;WHEN SUBSTRING(TM4.F00001,3,3) = 'RVP' THEN 'DIRECT' END AS SEGMENT&#xA;FROM S10DA50B.QS36F.\&quot;M.TM\&quot; TM1&#xA;LEFT JOIN S10DA50B.QS36F.\&quot;M.TM\&quot; TM2 ON SUBSTRING(TM2.K00001,1,10) = 'TEREXPORTL' AND SUBSTRING(TM2.F00001,3,3) = 'ASM' AND SUBSTRING(TM2.K00001,11,2) = SUBSTRING(TM1.F00001,41,2)&#xA;LEFT JOIN S10DA50B.QS36F.\&quot;M.TM\&quot; TM4 ON SUBSTRING(TM4.K00001,1,10) = 'TEREXPORTL' AND ((SUBSTRING(TM4.F00001,3,4) = 'RSVP' AND SUBSTRING(TM4.K00001,11,2) = SUBSTRING(TM1.F00001,35,2)) &#xA;OR (SUBSTRING(TM4.F00001,3,3) = 'RVP' AND SUBSTRING(TM4.K00001,11,2) = SUBSTRING(TM1.F00001,43,2)))&#xA;WHERE SUBSTRING(TM1.K00001,1,9) = 'TERRITORY'&#xA;AND TRIM(SUBSTRING(TM1.K00001,10,3)) &lt;&gt; ''&#xA;AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')&quot;"
+      DTS:Expression="&quot;SELECT &#xA;TRIM(SUBSTRING(TM1.K00001,10,3)) AS TERRITORY, &#xA;TRIM(SUBSTRING(TM1.F00001,1,31)) AS TERRITORY_NAME,&#xA;TRIM(SUBSTRING(TM1.F00001,41,2)) AS ASM_CODE,&#xA;Trim(SUBSTRING(TM2.F00001,7,19)) as ASM_NAME,&#xA;Trim(SUBSTRING(TM2.F00001,26,28)) as AREA,&#xA;TRIM(SUBSTRING(TM1.F00001,35,2)) AS REGIONAL_MANAGER_CODE,&#xA;REPLACE(REPLACE(TRIM(SUBSTRING(TM4.F00001,3,23)),'RSVP-',''),'RVP-','') AS REGIONAL_MANANGER_NAME,&#xA;REPLACE(TRIM(SUBSTRING(TM4.F00001,26,25)),'REGION','') AS REGION,&#xA;CASE WHEN SUBSTRING(TM4.F00001,3,4) = 'RSVP' THEN 'ASC'&#xA;WHEN SUBSTRING(TM4.F00001,3,3) = 'RVP' THEN 'DIRECT' END AS SEGMENT&#xA;FROM S10DA50B.QS36F.\&quot;M.TM\&quot; TM1&#xA;LEFT JOIN S10DA50B.QS36F.\&quot;M.TM\&quot; TM2 ON SUBSTRING(TM2.K00001,1,10) = 'TEREXPORTL' AND SUBSTRING(TM2.F00001,3,3) = 'ASM' AND SUBSTRING(TM2.K00001,11,2) = SUBSTRING(TM1.F00001,41,2)&#xA;LEFT JOIN S10DA50B.QS36F.\&quot;M.TM\&quot; TM4 ON SUBSTRING(TM4.K00001,1,10) = 'TEREXPORTL' AND ((SUBSTRING(TM4.F00001,3,4) = 'RSVP' AND SUBSTRING(TM4.K00001,11,2) = SUBSTRING(TM1.F00001,35,2)) &#xA;OR (SUBSTRING(TM4.F00001,3,3) = 'RVP' AND SUBSTRING(TM4.K00001,11,2) = SUBSTRING(TM1.F00001,43,2)))&#xA;WHERE SUBSTRING(TM1.K00001,1,9) = 'TERRITORY'&#xA;AND TRIM(SUBSTRING(TM1.K00001,10,3)) &lt;&gt; ''&#xA; /* AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP') */&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -234,7 +234,7 @@ LEFT JOIN S10DA50B.QS36F."M.TM" TM4 ON SUBSTRING(TM4.K00001,1,10) = 'TEREXPORTL'
 OR (SUBSTRING(TM4.F00001,3,3) = 'RVP' AND SUBSTRING(TM4.K00001,11,2) = SUBSTRING(TM1.F00001,43,2)))
 WHERE SUBSTRING(TM1.K00001,1,9) = 'TERRITORY'
 AND TRIM(SUBSTRING(TM1.K00001,10,3)) &lt;&gt; ''
-AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')</DTS:VariableValue>
+ /* AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP') */</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -2225,7 +2225,7 @@ LEFT JOIN S10DA50B.QS36F."M.TM" TM4 ON SUBSTRING(TM4.K00001,1,10) = 'TEREXPORTL'
 OR (SUBSTRING(TM4.F00001,3,3) = 'RVP' AND SUBSTRING(TM4.K00001,11,2) = SUBSTRING(TM1.F00001,43,2)))
 WHERE SUBSTRING(TM1.K00001,1,9) = 'TERRITORY'
 AND TRIM(SUBSTRING(TM1.K00001,10,3)) &lt;&gt; ''
-AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')</property>
+ /* AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP') */</property>
                     <property
                       dataType="System.Int32"
                       description="Specify the number of rows fetched per batch."
@@ -3005,9 +3005,9 @@ AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')</p
           Id="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct"
           TopLeft="42.5,108.5" />
         <NodeLayout
-          Size="129,43"
-          Id="Package\Run Package Logic\Load MDS Staging Table\Read Data"
-          TopLeft="38,5.5" />
+          Size="121,42"
+          Id="Package\Run Package Logic\Load MDS Staging Table\RC_Error"
+          TopLeft="42.0000000000001,517.5" />
         <NodeLayout
           Size="185,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Insert Into Error Table"
@@ -3017,10 +3017,6 @@ AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')</p
           Id="Package\Run Package Logic\Load MDS Staging Table\Get Error Details"
           TopLeft="24.0000000000001,619.5" />
         <NodeLayout
-          Size="121,42"
-          Id="Package\Run Package Logic\Load MDS Staging Table\RC_Error"
-          TopLeft="42.0000000000001,517.5" />
-        <NodeLayout
           Size="194,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower"
           TopLeft="5.50000000000006,415.5" />
@@ -3029,75 +3025,13 @@ AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')</p
           Id="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows"
           TopLeft="22.5,312.5" />
         <NodeLayout
+          Size="129,43"
+          Id="Package\Run Package Logic\Load MDS Staging Table\Read Data"
+          TopLeft="38,5.5" />
+        <NodeLayout
           Size="169,42"
           Id="Package\Run Package Logic\Load MDS Staging Table\Additional Columns"
           TopLeft="18,210.5" />
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
-          TopLeft="102.5,559.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
-          TopLeft="102.5,150.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Output 0]"
-          TopLeft="102.5,661.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
           TopLeft="102.5,457.5">
@@ -3171,6 +3105,72 @@ AND (SUBSTRING(TM4.F00001,3,4) = 'RSVP' OR SUBSTRING(TM4.F00001,3,3) = 'RVP')</p
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Derived Column Output]"
           TopLeft="102.5,252.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
+          TopLeft="102.5,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
+          TopLeft="102.5,150.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Output 0]"
+          TopLeft="102.5,661.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
