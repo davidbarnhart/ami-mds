@@ -13,8 +13,8 @@
   DTS:ObjectName="MasterCustomerModel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="195"
-  DTS:VersionGUID="{4B15723C-1E9D-440A-AA80-3FC9F8903CD5}">
+  DTS:VersionBuild="196"
+  DTS:VersionGUID="{CE6EC115-D718-4FA6-92E9-25ECDA4198E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -61,7 +61,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStartDate">
       <DTS:VariableValue
-        DTS:DataType="7">12/18/2017 6:13:56 PM</DTS:VariableValue>
+        DTS:DataType="7">7/24/2018 1:25:26 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -72,7 +72,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStopDate">
       <DTS:VariableValue
-        DTS:DataType="7">12/18/2017 6:14:31 PM</DTS:VariableValue>
+        DTS:DataType="7">7/24/2018 1:25:34 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -280,6 +280,7 @@
               DTS:refId="Package\Run Package Logic\Complete Golden Records\Customer Group"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
+              DTS:Disabled="True"
               DTS:DTSID="{c281fc4f-ae31-4d89-b9d8-7d16fb626727}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -637,27 +638,27 @@
           Id="Package\Insert Audit Record"
           TopLeft="231.416663270444,5.5" />
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
+          Size="145,43"
           Id="Package\Run Package Logic\Complete Golden Records\Area Sales Manager"
           TopLeft="13.729163948757,262.166661513845" />
         <NodeLayout
-          Size="156,42.6666666666667"
+          Size="156,43"
           Id="Package\Run Package Logic\Complete Golden Records\Customer Group"
           TopLeft="71.1249964268256,466.299989361167" />
         <NodeLayout
-          Size="118.666666666667,42.6666666666667"
+          Size="119,43"
           Id="Package\Run Package Logic\Complete Golden Records\Location"
           TopLeft="46.9851166884899,120.438090783755" />
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
+          Size="145,43"
           Id="Package\Run Package Logic\Complete Golden Records\Location Type"
           TopLeft="45.3958301435536,47.0833306406936" />
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
+          Size="145,43"
           Id="Package\Run Package Logic\Complete Golden Records\Regional Sales Manager"
           TopLeft="116.229162421388,211.033329094847" />
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
+          Size="145,43"
           Id="Package\Run Package Logic\Complete Golden Records\SalesTerritory"
           TopLeft="65.1874965153014,373.708322514345" />
         <EdgeLayout
@@ -793,34 +794,34 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="274.666666666667,564"
-          Size="274.666666666667,606.666666666667"
+          PanelSize="275,564"
+          Size="275,607"
           Id="Package\Run Package Logic\Complete Golden Records"
           TopLeft="26,39.0000000000001" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="251.333333333334,341.333333333334"
-          Size="251.333333333334,384"
+          PanelSize="251,341"
+          Size="251,384"
           Id="Package\Run Package Logic\Maps"
           TopLeft="597.166662655771,47.3333332558475" />
         <NodeLayout
-          Size="124,42.6666666666667"
+          Size="124,43"
           Id="Package\Run Package Logic\Partial Golden Records\Customer"
           TopLeft="57.7916606099654,47.8666616145771" />
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="167,43"
           Id="Package\Run Package Logic\Partial Golden Records\Customer Location"
           TopLeft="52.5833273542423,165.449996517002" />
         <NodeLayout
-          Size="202.666666666667,42.6666666666667"
+          Size="203,43"
           Id="Package\Run Package Logic\Partial Golden Records\Customer Location ShipTo"
           TopLeft="52.5833273542423,268.116663183669" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="260,366"
-          Size="260,408.666666666667"
+          Size="260,409"
           Id="Package\Run Package Logic\Partial Golden Records"
           TopLeft="322.333332315087,42.133334356149" />
         <EdgeLayout
@@ -876,12 +877,12 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="853.333333333334,701.333333333334"
-          Size="853.333333333334,744.666666666667"
+          PanelSize="853,702"
+          Size="853,745"
           Id="Package\Run Package Logic"
           TopLeft="265.791662758217,107.5" />
         <NodeLayout
-          Size="177.333333333334,42.6666666666667"
+          Size="177,43"
           Id="Package\Update Audit Record"
           TopLeft="1039.16666254401,35.683334778448" />
         <EdgeLayout
