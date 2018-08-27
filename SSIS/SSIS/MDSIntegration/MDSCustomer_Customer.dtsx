@@ -13,8 +13,8 @@
   DTS:ObjectName="MDSCustomer_Customer"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="171"
-  DTS:VersionGUID="{2112F579-C071-4478-8BA0-946D7E101523}">
+  DTS:VersionBuild="172"
+  DTS:VersionGUID="{DFA45B90-AF70-440A-B65B-CD2F5C6A9D5A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -128,7 +128,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStartDate">
       <DTS:VariableValue
-        DTS:DataType="7">3/8/2018 1:34:42 PM</DTS:VariableValue>
+        DTS:DataType="7">6/30/2018 10:12:33 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -139,7 +139,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ExtractStopDate">
       <DTS:VariableValue
-        DTS:DataType="7">3/8/2018 1:41:15 PM</DTS:VariableValue>
+        DTS:DataType="7">6/30/2018 10:13:40 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -4248,13 +4248,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
                         <inputColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].Columns[AMISegment]"
-                          cachedDataType="wstr"
-                          cachedLength="250"
-                          cachedName="AMISegment"
-                          externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[AMISegment]" />
-                        <inputColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].Columns[DemandSource]"
                           cachedDataType="wstr"
                           cachedLength="250"
@@ -4500,11 +4493,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           length="250"
                           name="BillingAccountGroup" />
                         <externalMetadataColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          dataType="wstr"
-                          length="250"
-                          name="AMISegment" />
-                        <externalMetadataColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[DemandSource]"
                           dataType="wstr"
                           length="250"
@@ -4549,6 +4537,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           dataType="wstr"
                           length="250"
                           name="AreaSalesManager" />
+                        <externalMetadataColumn
+                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[ASMFilter]"
+                          dataType="wstr"
+                          length="250"
+                          name="ASMFilter" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -4888,13 +4881,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
                         <inputColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].Columns[AMISegment]"
-                          cachedDataType="wstr"
-                          cachedLength="250"
-                          cachedName="AMISegment"
-                          externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[AMISegment]" />
-                        <inputColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].Columns[DemandSource]"
                           cachedDataType="wstr"
                           cachedLength="250"
@@ -5140,11 +5126,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           length="250"
                           name="BillingAccountGroup" />
                         <externalMetadataColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          dataType="wstr"
-                          length="250"
-                          name="AMISegment" />
-                        <externalMetadataColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[DemandSource]"
                           dataType="wstr"
                           length="250"
@@ -5189,6 +5170,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           dataType="wstr"
                           length="250"
                           name="AreaSalesManager" />
+                        <externalMetadataColumn
+                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[ASMFilter]"
+                          dataType="wstr"
+                          length="250"
+                          name="ASMFilter" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -5528,13 +5514,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
                         <inputColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].Columns[AMISegment]"
-                          cachedDataType="wstr"
-                          cachedLength="250"
-                          cachedName="AMISegment"
-                          externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[AMISegment]" />
-                        <inputColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].Columns[DemandSource]"
                           cachedDataType="wstr"
                           cachedLength="250"
@@ -5780,11 +5759,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           length="250"
                           name="BillingAccountGroup" />
                         <externalMetadataColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          dataType="wstr"
-                          length="250"
-                          name="AMISegment" />
-                        <externalMetadataColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[DemandSource]"
                           dataType="wstr"
                           length="250"
@@ -5829,6 +5803,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           dataType="wstr"
                           length="250"
                           name="AreaSalesManager" />
+                        <externalMetadataColumn
+                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input].ExternalColumns[ASMFilter]"
+                          dataType="wstr"
+                          length="250"
+                          name="ASMFilter" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -6168,13 +6147,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
                         <inputColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].Columns[AMISegment]"
-                          cachedDataType="wstr"
-                          cachedLength="250"
-                          cachedName="AMISegment"
-                          externalMetadataColumnId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          lineageId="Package\Run Package Logic\Load MDS Staging Table\Read Data.Outputs[OLE DB Source Output].Columns[AMISegment]" />
-                        <inputColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].Columns[DemandSource]"
                           cachedDataType="wstr"
                           cachedLength="250"
@@ -6420,11 +6392,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           length="250"
                           name="BillingAccountGroup" />
                         <externalMetadataColumn
-                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].ExternalColumns[AMISegment]"
-                          dataType="wstr"
-                          length="250"
-                          name="AMISegment" />
-                        <externalMetadataColumn
                           refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].ExternalColumns[DemandSource]"
                           dataType="wstr"
                           length="250"
@@ -6469,6 +6436,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           dataType="wstr"
                           length="250"
                           name="AreaSalesManager" />
+                        <externalMetadataColumn
+                          refId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Inputs[OLE DB Destination Input].ExternalColumns[ASMFilter]"
+                          dataType="wstr"
+                          length="250"
+                          name="ASMFilter" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -9271,24 +9243,24 @@ FROM dbo.TERMS</property>
                   startId="Package\Run Package Logic\Load MDS Staging Table\Determine Action.Outputs[New Members]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output3]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 3]"
                   name="OLE DB Destination Error Output"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Outputs[OLE DB Destination Error Output]" />
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Outputs[OLE DB Destination Error Output]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 1]"
-                  name="OLE DB Destination Error Output"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Outputs[OLE DB Destination Error Output]" />
-                <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Inputs[OLE DB Destination Input]"
                   name="OLE DB Destination Error Output"
                   startId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows to Update.Outputs[OLE DB Destination Error Output]" />
                 <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 3]"
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Inputs[OLE DB Destination Input]"
                   name="OLE DB Destination Error Output"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows Slower.Outputs[OLE DB Destination Error Output]" />
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert New Rows.Outputs[OLE DB Destination Error Output]" />
+                <path
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Union Errors.Inputs[Union All Input 1]"
+                  name="OLE DB Destination Error Output"
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Insert Rows Slower.Outputs[OLE DB Destination Error Output]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Source Output]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct.Inputs[Row Count Input 1]"
@@ -9306,24 +9278,24 @@ FROM dbo.TERMS</property>
                   startId="Package\Run Package Logic\Load MDS Staging Table\Get Error Details.Outputs[Output 0]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 13]"
+                  endId="Package\Run Package Logic\Load MDS Staging Table\Update Additional Columns.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Run Package Logic\Load MDS Staging Table\Updated Rows.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Generate HashValue.Inputs[Input 0]"
                   name="Row Count Output 1"
                   startId="Package\Run Package Logic\Load MDS Staging Table\RC_Xtrct.Outputs[Row Count Output 1]" />
                 <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Get Error Details.Inputs[Input 0]"
                   name="Row Count Output 1"
                   startId="Package\Run Package Logic\Load MDS Staging Table\RC_Error.Outputs[Row Count Output 1]" />
                 <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
+                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\Additional Columns.Inputs[Derived Column Input]"
                   name="Row Count Output 1"
                   startId="Package\Run Package Logic\Load MDS Staging Table\New Rows.Outputs[Row Count Output 1]" />
-                <path
-                  refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
-                  endId="Package\Run Package Logic\Load MDS Staging Table\Update Additional Columns.Inputs[Derived Column Input]"
-                  name="Row Count Output 1"
-                  startId="Package\Run Package Logic\Load MDS Staging Table\Updated Rows.Outputs[Row Count Output 1]" />
                 <path
                   refId="Package\Run Package Logic\Load MDS Staging Table.Paths[Union All Output 1]"
                   endId="Package\Run Package Logic\Load MDS Staging Table\RC_Error.Inputs[Row Count Input 1]"
@@ -10089,28 +10061,6 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 13]"
-          TopLeft="292.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
           TopLeft="490.5,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10132,7 +10082,7 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 12]"
           TopLeft="292.5,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10166,7 +10116,7 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 11]"
           TopLeft="490.666666666667,1169.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10179,6 +10129,28 @@ FROM dbo.TERMS</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.0666666744153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[Row Count Output 1]"
+          TopLeft="292.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10267,66 +10239,6 @@ FROM dbo.TERMS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output3]"
-          TopLeft="247.5,863.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,20.533203125,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
-          TopLeft="490.5,965.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="21.6666666666666,60"
-              Start="0,0"
-              End="21.6666666666666,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5873925501433"
-                    Point2="0,35.5873925501433"
-                    Point3="4,35.5873925501433" />
-                  <mssgle:LineSegment
-                    End="17.6666666666666,35.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="17.6666666666666,35.5873925501433"
-                    Point2="21.6666666666666,35.5873925501433"
-                    Point3="21.6666666666666,39.5873925501433" />
-                  <mssgle:LineSegment
-                    End="21.6666666666666,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-62.3755729166667,40.5873925501433,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
           TopLeft="247.5,965.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10362,8 +10274,68 @@ FROM dbo.TERMS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output2]"
           TopLeft="490.5,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,20.533203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output1]"
+          TopLeft="490.5,965.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.6666666666666,60"
+              Start="0,0"
+              End="21.6666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5873925501433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5873925501433"
+                    Point2="0,35.5873925501433"
+                    Point3="4,35.5873925501433" />
+                  <mssgle:LineSegment
+                    End="17.6666666666666,35.5873925501433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.6666666666666,35.5873925501433"
+                    Point2="21.6666666666666,35.5873925501433"
+                    Point3="21.6666666666666,39.5873925501433" />
+                  <mssgle:LineSegment
+                    End="21.6666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-62.3755729166667,40.5873925501433,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Run Package Logic\Load MDS Staging Table.Paths[OLE DB Destination Error Output]"
+          TopLeft="247.5,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
